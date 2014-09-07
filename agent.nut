@@ -23,6 +23,8 @@ function update() {
         server.log("calculating and publishing");
         publish();
         readings = 0;
+        b1 = [];
+        b2 = [];
     } else {
         server.log("not yet publishing");
         readings++;
