@@ -85,8 +85,8 @@ function triangulate(b1, b2, L) {
     local y = 0.0;
     x = (math.pow(L.tofloat(), 2.0) + math.pow(b1.tofloat(), 2.0) - math.pow(b2.tofloat(), 2.0)) / (2 * L);
     server.log("x is " + x);
-    y = math.sqrt((b1.tofloat() * b1.tofloat()) - (x.tofloat() * x.tofloat()));
-    server.log("y is " + y);
+    y = (L, math.sqrt((b1.tofloat() * b1.tofloat()) - (x.tofloat() * x.tofloat())));
+    y = 0.0;
     local results = [];
     results.push(x);
     results.push(y);
@@ -98,7 +98,7 @@ function triangulate(b1, b2, L) {
     channelBase <- split(http.agenturl(), "/").pop();
 // initialize the pubnub object
     pubnub <- PubNub(PUBKEY, SUBKEY, SECRETKEY);
-    local response = { "x" : x, "y" : y, "id": "mike" }
+    local response = { "x" : x.tostring(), "y" : y.tostring(), "id": "mike" }
     pubnub.publish("baecon", response);
     return results;
 }
@@ -396,3 +396,4 @@ class PubNub {
         });
     }
 }
+
