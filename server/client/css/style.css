@@ -1,0 +1,22 @@
+body {
+  margin: 1em;
+  background: #293950;
+  color: #ecf0f0;
+}
+
+#map{
+  position : fixed;
+  width : 100%;
+  height : 100%;
+}
+
+.entity{
+  position : absolute;
+  width : 15px;
+  height:15px;
+  background-color : #E27A3F;
+  top : 10%;
+  left : 10%;
+  transition: all 1s ease-in-out;
+  border-radius : 50%;
+}
