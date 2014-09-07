@@ -9,7 +9,7 @@ function getWlans() {
     foreach (hotspot in wlans)
     {
         if(hotspot.ssid  == "baecon") {
-            server.log("observed baecon");
+            server.log("observed baecon" + hotspot.rssi);
             b1 = hotspot.rssi;
             }  else if(hotspot.ssid  == "baecon2") {
             server.log("observed baecon2");

@@ -14,7 +14,7 @@ device.on("baecon", function(arg) {
     b1.push(arg[0]);
     b2.push(arg[1]);
     update();
-    imp.wakeup(0.25, function() {
+    imp.wakeup(0.1, function() {
         device.send("getWlans", null);
     });
 });
@@ -66,11 +66,11 @@ function publish() {   // get last three non-zero elements and average them
 
 function distance(rssi, L) {  // if rssi is greater
     local rssi_f = rssi.tofloat();
-    if (rssi_f > -52.0) {  // too close to make a call
+    if (rssi_f > -48.0) {  // too close to make a call
         return 0.0;
-    } else if ((rssi_f <= -52.0) && (rssi_f > -58.0)) {
+    } else if ((rssi_f <= -48.0) && (rssi_f > -56.0)) {
         return 0.25 * L;
-    } else if ((rssi_f <= -58.0) && (rssi_f > -62.0)) {
+    } else if ((rssi_f <= -56.0) && (rssi_f > -62.0)) {
         return 0.5 * L;
     } else if ((rssi_f <= 62.0) && (rssi_f > -68)) {
         return 0.75 * L;
@@ -84,9 +84,9 @@ function triangulate(b1, b2, L) {
     local x = 0.0;
     local y = 0.0;
     x = (math.pow(L.tofloat(), 2.0) + math.pow(b1.tofloat(), 2.0) - math.pow(b2.tofloat(), 2.0)) / (2 * L);
-    x = (math.pow(L.tofloat(), 2.0) + math.pow(b1.tofloat(), 2.0) - math.pow(b2.tofloat(), 2.0)) / (2 * L);
     server.log("x is " + x);
     y = math.sqrt((b1.tofloat() * b1.tofloat()) - (x.tofloat() * x.tofloat()));
+    server.log("y is " + y);
     local results = [];
     results.push(x);
     results.push(y);
