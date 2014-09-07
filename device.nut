@@ -9,10 +9,10 @@ function getWlans() {
     foreach (hotspot in wlans)
     {
         if(hotspot.ssid  == "baecon") {
-            //server.log("Found baecon");
+            server.log("observed baecon");
             b1 = hotspot.rssi;
             }  else if(hotspot.ssid  == "baecon2") {
-            //server.log("Found baecon2");
+            server.log("observed baecon2");
             b2 = hotspot.rssi;
             } else if ("pubnub-ac" in hotspot.ssid) {
             //server.log("Found the non-baecon controller"); 
